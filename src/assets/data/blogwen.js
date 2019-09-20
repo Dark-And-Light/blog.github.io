@@ -1,11 +1,36 @@
 let blog_wen = [
     {
+        id:5,
+        label:'js',
+        title:'===和==的区别',
+        first:'==仅当左右操作的数相等时返回true，如果两个操作数不是同一类型是，js会尝试将其转换成合适的类型然后进行比较。===：当且仅当左右操作数据类型相等，且值相当时，才会返回true，当两个操作数不是同一类型时，js不会进行数据转换'
+    },
+    {
+        id:4,
+        label:"mpvue",
+        title:"在mpvue使用中app.json不存在、生命周期函数的对应以及tabbar徽标在非tabbar页面不能设置徽标问题",
+        img_url:require('../images/img_row1.jpg'),
+        first:'小程序遇到app.json找不到的情况 是配置文件中没有"miniprogramRoot": "dist/wx/"，mpvue没有相对于onshow的生命函数 总体来说只有beforeMount()是最实用的在非tabbar页面不能设置tabbar的徽标等，列如加入购物车后返回主页面 tabbar徽标未改变但是数据已经写入只能使用小程序原生的生命函数 每次页面加载进行修改'
+    },
+    {
+        id:3,
+        label:"webpack",
+        title:"关于webpack的配置中遇到的问题",
+        img_url:require('../images/img_row1.jpg'),
+        first:"刚开始学习webpack打包工具时说实话好麻烦，就目前为止，在webpack学习过程中最大的麻烦就是版本问题，已经插件和依赖的更新",
+        content:""
+    },
+    {
+        id:2,
+        label:"Vue",
         title:"在Vue中使用audio遇到的情况想法以及解决过程的岔路",
         img_url:require('../images/img_row1.jpg'),
         first:"在之前的项目中极少涉及到多媒体相关的使用,这是设计博客,能想到的样式太少,就想到在页面设计一个类似于网易云音乐的样式,开始的时候想到的是Vue中的refs属性来获取到audio的属性和方法,后来在做的过程中也验证了思路是没错的,但是audio在Vue中似乎有属于他的方法才能实现音乐播放过程及结束时调用",
         content:""
     },
     {
+        id:1,
+        label:"Vue",
         title:"由Vue/cli③创建的Vue项目本地图片同过动态绑定会出现图片不显示也不报错的问题",
         img_url:require('../images/img_row2.jpg'),
         first:"以前使用webpack创建的项目使用本地图片资源未出现这样的情况,连图片404都没有显示,就我在控制台看到的信息并未报错任何错误,目前只找一个解决办法require('图片地址'),并且发现(目前在开发环境中看到的)查看的图片地址的url发生了改变变成img/img/的地址",

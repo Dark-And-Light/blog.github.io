@@ -22,7 +22,7 @@
 					</a>
 				</li>
 			</ul>
-			<blogwen></blogwen>
+			<blogwen :datas="this.newBlog"></blogwen>
 	  </div>
 	  <div class="right">
 			<div class="card">
@@ -54,14 +54,23 @@
 <script>
 import blogwen from '../components/LatestBlog.vue'
 import music from '../components/Music.vue'
+import blogData from '../assets/data/blogwen.js'
 export default {
 	data() {
 		return {
 			swiper:[
 				{src:require('../assets/images/img_row1.jpg')},
 				{src:require('../assets/images/img_row2.jpg')}
-			]
+			],
+			newBlog:[]
 		}
+	},
+	created() {
+		blogData.forEach((item,index)=>{
+			if(index<4){
+				this.newBlog.push(item)
+			}
+		})
 	},
 	components:{
 		blogwen,

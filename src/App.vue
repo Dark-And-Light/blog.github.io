@@ -6,7 +6,7 @@
 				<nav>
 					<ul>
 						<li><router-link to="/">主页</router-link></li>
-						<li><router-link to="">个人博客</router-link></li>
+						<li><router-link to="/blog">个人博客</router-link></li>
 						<li><router-link to="/about">关于我</router-link></li>
 					</ul>
 				</nav>
@@ -15,9 +15,17 @@
 		<article>
 			<router-view/>
 		</article>
+		<foote></foote>
   </div>
 </template>
-
+<script>
+import foote from './components/footer.vue'
+export default {
+	components:{
+		foote
+	}
+}
+</script>
 <style lang="less" scope>
 #app{
 	width: 100%;

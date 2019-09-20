@@ -2,7 +2,7 @@
   <div class="blogWen">
 	  <h2>最新博文</h2>
 	  <ul>
-		  <li v-for="(item, index) in blogwen" :key="index">
+		  <li v-for="(item, index) in wenData" :key="index">
 			  <h3 class="blogTitle">
 				  <span>【顶】</span>
 				  <a href="#">{{item.title}}</a>
@@ -31,11 +31,11 @@
   </div>
 </template>
 <script>
-import blogwen from '../assets/data/blogwen.js'
 export default {
+	props:['datas'],
 	data() {
 		return {
-			blogwen
+			wenData:this.datas
 		}
 	},
 }
@@ -47,6 +47,7 @@ export default {
   border-radius: 6px;
   background: white;
   padding: 20px 20px 0 20px;
+  box-sizing: border-box;
 }
 .blogWen h2{
 	font-size: 16px;
@@ -99,6 +100,9 @@ export default {
 	border-radius: 2px;
 	margin-right: 20px;
 }
+.blog_img img{
+	width: 100%;
+}
 .blog_img span{
 	position: absolute;
 	top: 0;
@@ -118,7 +122,6 @@ export default {
 	width: 73%;
 	font-size: 14px;
 	color: #666;
-	
 	margin-top: 20px;
 	display: flex;
 	flex-direction: column;
