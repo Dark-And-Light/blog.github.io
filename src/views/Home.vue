@@ -47,6 +47,7 @@
 				</ul>
 			</div>
 			<music></music>
+			<siteinfo></siteinfo>
 	  </div>
   </div>
 </template>
@@ -54,6 +55,7 @@
 <script>
 import blogwen from '../components/LatestBlog.vue'
 import music from '../components/Music.vue'
+import siteinfo from '../components/siteInfo.vue'
 import blogData from '../assets/data/blogwen.js'
 export default {
 	data() {
@@ -74,7 +76,8 @@ export default {
 	},
 	components:{
 		blogwen,
-		music
+		music,
+		siteinfo
 	}
 }
 </script>
@@ -125,6 +128,10 @@ background-color: #d3dce6;
 	margin-bottom: 10px;
 	border-radius: 4px;
 	position: relative;
+	transition: all ease-in-out 0.5s;
+}
+.img_row li:hover{
+	transform: scale(1.05);
 }
 .img_row li span{
 	position: absolute;

@@ -16,11 +16,10 @@
         <div class="Label">
             <p>文章分类：</p>
             <ul>
-                <li class="test">css</li>
-                <li class="test">html</li>
-                <li class="test">Vue</li>
-                <li class="test">webpack</li>
-                <li class="test">UI组件</li>
+                <li class="test" 
+                v-for="(item, index) in label" 
+                :key="index"
+                @click="tabLabel(item)">{{item}}</li>
             </ul>
         </div>
         <blogwen :datas="this.data"></blogwen>
@@ -32,7 +31,8 @@ import blogData from '../assets/data/blogwen'
 export default {
     data() {
         return {
-            data:[]
+            data:[],
+            label:[]
         }
     },
     created() {
@@ -42,10 +42,32 @@ export default {
             }
             return  
         })
-        console.log(this.data)
+        blogData.forEach(item=>{
+            this.label.push(item.label)
+        })
+       this.label =  this.quique(this.label);
     },
     methods: {
-        
+        tabLabel(i){
+            this.data = []
+            blogData.forEach(itme=>{
+                if(itme.label == i ){
+                    this.data.push(itme)
+                }
+            })
+        },
+        //去重
+        quique(arr){
+                for(var i=0; i<arr.length; i++){
+                for(var j=i+1; j<arr.length; j++){
+                    if(arr[i]==arr[j]){         //第一个等同于第二个，splice方法删除第二个
+                        arr.splice(j,1);
+                        j--;
+                    }
+                }
+            }
+            return arr;
+        }
     },
     components:{
         blogwen

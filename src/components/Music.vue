@@ -7,16 +7,18 @@
                <span class="msk"></span>
             </div>
             <audio ref="audio" @timeupdate="timeupdate" @ended="onEnded" @canplay="onCanplay">
-                <source src="../assets/audio/芒种.mp3" type="audio/mpeg">
+                <source src="../assets/audio/芒种.mp3" type="audio/mpeg" ref="sour">
                 Your browser does not support the audio tag.
             </audio>
             <!-- 自定义audio样式 -->
             <div class="audioBox">
-                <div class="lineBox">
+                <h4>芒种</h4>
+                <div class="barBox" 
+                @mousedown="getProgress($event)">
                     <div class="line"></div>
-                    <div class="nowLine" :style="nowLine"></div>
-                    <p class="time">{{time}}/{{duration}}</p>
+                    <div class="dot" :style="dot"></div>
                 </div>
+                <p class="time">{{time}}/{{duration}}</p>
                 <div class="control">
                     <i class="el-icon-d-arrow-left"></i>
                     <i :class="[off?'el-icon-video-pause':'el-icon-video-play']"
@@ -34,7 +36,7 @@ export default {
             off:false,
             time:"00:00",
             duration:"00:00",
-            nowLine:{
+            dot:{
                 left:''
             }
         }
@@ -54,23 +56,21 @@ export default {
             }else(
                 audio.pause()
             )
-            
         },
         timeupdate(){
             this.time = this.transTime(parseInt(this.$refs.audio.currentTime))
             this.duration = this.transTime(this.$refs.audio.duration)
-            
-            this.nowLine.left = (this.$refs.audio.currentTime/this.$refs.audio.duration)*70+'%';
+            this.dot.left = (this.$refs.audio.currentTime/this.$refs.audio.duration)*100+'%';
         },
         onEnded(){//播放结束
-            this.nowLine.left = 0;
+            this.dot.left = 0;
         },
         onCanplay(){
             //获取audio音频文件总时长 并设置到界面并解决出现 NAN 的问题
             this.duration = this.transTime(this.$refs.audio.duration);
         },
-
-         transTime(value) {//时间转换
+        //时间转换
+        transTime(value) {
             let time = "";
             let h = parseInt(value / 3600);
             value %= 3600;
@@ -94,6 +94,10 @@ export default {
         }
         time += s[i].length == 1 ? ("0" + s[i]) : s[i];
         return time;
+        },
+        //点击移动更新进度
+        getProgress(e){
+            console.log(e.offsetX)
         }
     },
     computed: {
@@ -156,28 +160,34 @@ export default {
 .audioBox{
   
 }
-.lineBox{
+.audioBox h4{
     width: 100%;
-    height: 40px;
+    text-align: center;
+    padding:10px 0 10px;
+}
+.barBox{
+    width: 100%;
+    height: 20px;
     position: relative;
+    background: white;
+    cursor:pointer
 }
 .line{
-    width: 70%;
-    height: 4px;
-    background: skyblue;
+    width: 100%;
+    height: 2px;
+    background: red;
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
 }
-.nowLine{
+.dot{
     position: absolute;
     height: 10px;
-    width: 10px;
     background: #000;
-    left: 0;
+    width: 10px;
+    border-radius: 50%;
     top: 50%;
     transform: translateY(-50%);
-    border-radius: 50%;
 }
 .control{
     font-size: 30px;
@@ -185,9 +195,7 @@ export default {
     justify-content: space-around;
 }
 .time{
-    position: absolute;
-    right: 0;
-    top: 50%;
-    transform: translateY(-50%);
+    text-align: center;
+    padding-bottom: 10px;
 }
 </style>

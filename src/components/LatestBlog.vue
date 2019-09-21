@@ -2,14 +2,14 @@
   <div class="blogWen">
 	  <h2>最新博文</h2>
 	  <ul>
-		  <li v-for="(item, index) in wenData" :key="index">
+		  <router-link tag="li" to="" v-for="(item, index) in wenData" :key="index">
 			  <h3 class="blogTitle">
 				  <span>【顶】</span>
 				  <a href="#">{{item.title}}</a>
 			  </h3>
 			  <div class="box">
 				  <div class="blog_img">
-					  <span><a href="#">设计心得</a></span>
+					  <span><a href="javascript:;">设计心得</a></span>
 					  <img :src="item.img_url">
 				  </div>
 				  <div class="blogText">
@@ -21,12 +21,12 @@
 							<el-avatar :size="30" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
 							</div>
 							<p>2019-9-15</p>
-							<p>【<a href="#">设计心得</a>】</p>
+							<p>【<a href="javascript:;">设计心得</a>】</p>
 							<a href="#" class="r">阅读更多</a>
 						</div>
 				  </div>
 			  </div>
-		  </li>
+		  </router-link>
 	  </ul>
   </div>
 </template>
@@ -38,6 +38,11 @@ export default {
 			wenData:this.datas
 		}
 	},
+	watch: {
+		datas:function(newV){
+			this.wenData = newV
+		}
+	}
 }
 </script>
 <style scope>
@@ -48,6 +53,10 @@ export default {
   background: white;
   padding: 20px 20px 0 20px;
   box-sizing: border-box;
+  border: #cccccc solid 1px;
+}
+.blogWen:hover{
+	box-shadow: 2px 0 20px #cccccc;
 }
 .blogWen h2{
 	font-size: 16px;
