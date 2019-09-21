@@ -22,7 +22,7 @@
 							</div>
 							<p>2019-9-15</p>
 							<p>【<a href="javascript:;">设计心得</a>】</p>
-							<a href="#" class="r">阅读更多</a>
+							<router-link to="/blog/details" class="r" tag="a">阅读更多</router-link>
 						</div>
 				  </div>
 			  </div>
