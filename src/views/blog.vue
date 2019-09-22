@@ -2,7 +2,7 @@
     <div class="blog">
         <div class="title_wen">
             <div class="img">
-                <img src="../assets/images/img_row1.jpg">
+                <img src="../assets/images/title_2.jpg">
             </div>
             <div class="wen">
                 <p class="wenTitle">你我的故事-博客日志</p>

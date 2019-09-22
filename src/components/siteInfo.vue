@@ -3,12 +3,22 @@
         <h3>站点信息</h3>
         <p><strong>建站时间</strong>：2019-9-17</p>
         <p><strong>主题模板：</strong>样式手敲代码仿制杨青青博客</p>
-        <p><strong>文章统计：</strong>32篇文章</p>
+        <p @click="goBlog" style="cursor:pointer"><strong>文章统计：</strong>{{this.number}}篇文章</p>
     </div>
 </template>
 <script>
 export default {
-    
+    props:['number'],
+    data() {
+        return {
+            
+        }
+    },
+    methods: {
+        goBlog(){
+            this.$router.push({ path: 'blog' })
+        }
+    },
 }
 </script>
 <style lang="less">

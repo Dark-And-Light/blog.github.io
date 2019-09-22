@@ -47,7 +47,7 @@
 				</ul>
 			</div>
 			<music></music>
-			<siteinfo></siteinfo>
+			<siteinfo :number="number"></siteinfo>
 	  </div>
   </div>
 </template>
@@ -64,11 +64,13 @@ export default {
 				{src:require('../assets/images/img_row1.jpg')},
 				{src:require('../assets/images/img_row2.jpg')}
 			],
-			newBlog:[]
+			newBlog:[],
+			number:0
 		}
 	},
 	created() {
 		blogData.forEach((item,index)=>{
+			this.number = index+1;
 			if(index<4){
 				this.newBlog.push(item)
 			}

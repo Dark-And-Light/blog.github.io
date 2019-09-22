@@ -170,7 +170,7 @@ export default {
     height: 20px;
     position: relative;
     background: white;
-    cursor:pointer
+    cursor:pointer;
 }
 .line{
     width: 100%;
